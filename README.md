@@ -47,8 +47,8 @@ Dessa maneira, o usuário gasta menos tempo pensando no que fazer e passa a ter 
 | Nível | Elementos escolhidos | Justificativa resumida |
 |---|---|---|
 | Funcional | Economiza tempo, Simplifica, Organiza, Integra, Reduz esforço, Evita aborrecimentos, Informa | O sistema prioriza tarefas, centraliza agenda e estudos, distribui revisões e sugere tópicos |
-| Emocional | Reduz a ansiedade, Bem-estar | Ter um plano alivia a sobrecarga, e o uso de técnicas com pausas favorece uma rotina equilibrada |
-| Mudança de vida | Motivação, Autorrealização | A IA adapta a abordagem com base no reforço e o objetivo final é o desenvolvimento profissional do usuário |
+| Emocional | Reduz a ansiedade, Bem-estar, Valor terapêutico | Ter um plano alivia a sobrecarga, e o uso de técnicas com pausas favorece uma rotina equilibrada e o chatbot oferece apoio contínuo |
+| Mudança de vida | Esperança, Motivação, Autorrealização |Mostra ao estudante que é possível se organizar, adapta a abordagem com base no reforço e visa ao desenvolvimento profissional |
 | Impacto social | Nenhum | A proposta não descreve impacto direto para além do usuário individual |
 
 ### Pirâmide B2B (cliente hipotético é uma instituição de ensino)
@@ -57,9 +57,9 @@ Dessa maneira, o usuário gasta menos tempo pensando no que fazer e passa a ter 
 |---|---|---|
 | Requisitos básicos | Atende às especificações, Preço aceitável, Conformidade regulatória, Padrões éticos | Funções entregues conforme a proposta, custo viável, adequação à LGPD e uso transparente dos dados |
 | Funcional | Inovação, Escalabilidade | Combina chatbot, priorização e técnicas adaptativas, e atende muitos alunos sem equipe proporcional |
-| Facilidade de fazer negócios | Economia de tempo, Redução de esforço, Informação, Organização, Integração, Disponibilidade, Configurabilidade | Automatiza parte do acompanhamento de estudos, funciona a qualquer hora e se ajusta a cada aluno |
+| Facilidade de fazer negócios | Economia de tempo, Redução de esforço, Menos aborrecimentos, Informação, Organização, Simplificação, Disponibilidade, Variedade, Configurabilidade, Flexibilidade | Automatiza parte do acompanhamento de estudos, centraliza ferramentas, funciona a qualquer hora e se ajusta a perfis e rotinas diferentes |
 | Individual | Redução de ansiedade, Crescimento e desenvolvimento | Segurança para o gestor que contrata e alinhamento ao desenvolvimento dos estudantes |
-| Inspiracional | Visão, Responsabilidade social | Apoio ao estudante centrado na pessoa, que pode favorecer desempenho e permanência no curso |
+| Inspiracional | Responsabilidade social | Apoio ao estudante que pode favorecer desempenho e permanência no curso |
 
 A justificativa completa de cada elemento, inclusive dos que não foram escolhidos, está na [página do projeto](https://fernandobruzzi.github.io/Engenharia-de-Software/).
 
