@@ -1,4 +1,4 @@
-# Nome do Projeto
+# AgendAI
 
 Assistente de rotina com inteligência artificial que agenda, planeja e se adapta ao estudante.
 
