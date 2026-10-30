@@ -14,8 +14,8 @@ Assistente de rotina com inteligência artificial que agenda, planeja e se adapt
 
 ## Links
 
-- Página do projeto (GitHub Pages) https://USUARIO.github.io/REPOSITORIO/
-- Repositório https://github.com/USUARIO/REPOSITORIO
+- Página do projeto (GitHub Pages) https://fernandobruzzi.github.io/Engenharia-de-Software/
+- Repositório https://github.com/fernandobruzzi/Engenharia-de-Software
 
 ## Sobre este repositório
 
@@ -61,14 +61,14 @@ Dessa maneira, o usuário gasta menos tempo pensando no que fazer e passa a ter 
 | Individual | Redução de ansiedade, Crescimento e desenvolvimento | Segurança para o gestor que contrata e alinhamento ao desenvolvimento dos estudantes |
 | Inspiracional | Visão, Responsabilidade social | Apoio ao estudante centrado na pessoa, que pode favorecer desempenho e permanência no curso |
 
-A justificativa completa de cada elemento, inclusive dos que não foram escolhidos, está na [página do projeto](https://USUARIO.github.io/REPOSITORIO/).
+A justificativa completa de cada elemento, inclusive dos que não foram escolhidos, está na [página do projeto](https://fernandobruzzi.github.io/Engenharia-de-Software/).
 
 ## Como publicar a página
 
 1. Envie os arquivos para o repositório mantendo a pasta `docs/`.
 2. No GitHub, abra **Settings → Pages**.
 3. Em **Build and deployment**, escolha **Deploy from a branch**, branch `main` e pasta `/docs`, e clique em **Save**.
-4. Após alguns minutos, a página estará disponível em `https://USUARIO.github.io/REPOSITORIO/`.
+4. Após alguns minutos, a página estará disponível em `https://fernandobruzzi.github.io/Engenharia-de-Software/`.
 
 ## Referências
 
