@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nome do Projeto | Engenharia de Software</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f5f0;
+    --surface: #ffffff;
+    --ink: #1d2433;
+    --muted: #5d6677;
+    --line: #e4e0d6;
+    --brand: #3b4cca;
+    --brand-soft: #e8eafb;
+    --accent: #e8743b;
+    --accent-soft: #fdeee5;
+    --ok: #1f8a70;
+    --ok-soft: #e2f4ee;
+    --l1: #3b4cca; --l2: #6a55c9; --l3: #a05bb8; --l4: #d0679b; --l5: #e8743b;
+    --radius: 16px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: "Inter", system-ui, sans-serif; line-height: 1.65; font-size: 17px;
+  }
+  a { color: var(--brand); }
+  h1, h2, h3 { font-family: "Fraunces", Georgia, serif; line-height: 1.2; margin: 0 0 .5em; }
+  h2 { font-size: clamp(1.7rem, 4vw, 2.3rem); }
+  h3 { font-size: 1.2rem; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+
+  /* navegação */
+  nav {
+    position: sticky; top: 0; z-index: 10; background: rgba(247,245,240,.92);
+    backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 60px; }
+  .logo { font-family: "Fraunces", serif; font-weight: 700; font-size: 1.15rem; color: var(--ink); text-decoration: none; }
+  .logo span { color: var(--accent); }
+  nav ul { list-style: none; display: flex; gap: 22px; margin: 0; padding: 0; font-size: .95rem; }
+  nav ul a { color: var(--muted); text-decoration: none; font-weight: 500; }
+  nav ul a:hover { color: var(--brand); }
+  @media (max-width: 720px) { nav ul { display: none; } }
+
+  /* topo */
+  header.hero { padding: 72px 0 56px; }
+  .tag {
+    display: inline-block; background: var(--accent-soft); color: var(--accent);
+    font-weight: 600; font-size: .8rem; letter-spacing: .06em; text-transform: uppercase;
+    padding: 6px 12px; border-radius: 999px; margin-bottom: 18px;
+  }
+  .hero h1 { font-size: clamp(2.3rem, 7vw, 4rem); max-width: 14ch; }
+  .hero p.lead { font-size: 1.2rem; color: var(--muted); max-width: 58ch; margin: 0 0 32px; }
+  .placeholder {
+    background: #fff7d6; border: 1.5px dashed #d9b84a; border-radius: 6px;
+    padding: 0 6px; color: #7a5d00;
+  }
+
+  .info-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;
+  }
+  .info {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px;
+  }
+  .info small { display: block; color: var(--muted); font-size: .75rem; text-transform: uppercase; letter-spacing: .08em; font-weight: 600; margin-bottom: 6px; }
+  .info ul { margin: 0; padding-left: 18px; }
+
+  section { padding: 64px 0; border-top: 1px solid var(--line); }
+  .section-intro { color: var(--muted); max-width: 70ch; margin-bottom: 32px; }
+
+  /* proposta */
+  .proposal {
+    background: var(--surface); border: 1px solid var(--line); border-left: 5px solid var(--brand);
+    border-radius: var(--radius); padding: 28px 30px; margin-bottom: 36px;
+  }
+  .proposal p { margin: 0 0 1em; }
+  .proposal p:last-child { margin: 0; }
+  .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+  .feature { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
+  .feature .ico {
+    width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center;
+    background: var(--brand-soft); color: var(--brand); margin-bottom: 14px;
+  }
+  .feature .ico svg { width: 22px; height: 22px; }
+  .feature p { margin: 0; color: var(--muted); font-size: .95rem; }
+
+  /* pirâmides */
+  .pyramid { display: flex; flex-direction: column; align-items: center; gap: 8px; margin: 8px 0 18px; }
+  .level {
+    border-radius: 14px; padding: 14px 16px 16px; color: #fff; text-align: center;
+  }
+  .level .lname { font-weight: 600; font-size: .78rem; text-transform: uppercase; letter-spacing: .1em; opacity: .95; margin-bottom: 8px; }
+  .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+  .chip {
+    font-size: .8rem; padding: 4px 10px; border-radius: 999px;
+    background: rgba(255,255,255,.16); color: rgba(255,255,255,.75);
+  }
+  .chip.on { background: #fff; color: var(--ink); font-weight: 600; box-shadow: 0 2px 6px rgba(0,0,0,.15); }
+  .chip.on::before { content: "✓ "; color: var(--ok); }
+  .w1 { width: 34%; } .w2 { width: 52%; } .w3 { width: 70%; } .w4 { width: 86%; } .w5 { width: 100%; }
+  @media (max-width: 720px) { .w1, .w2, .w3, .w4, .w5 { width: 100%; } }
+  .legend { text-align: center; color: var(--muted); font-size: .88rem; margin-bottom: 36px; }
+  .legend b { color: var(--ok); }
+
+  .context {
+    background: var(--brand-soft); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 28px;
+  }
+  .context p { margin: 0; }
+
+  .group-title {
+    display: flex; align-items: center; gap: 10px; margin: 30px 0 14px; font-family: "Fraunces", serif; font-size: 1.25rem; font-weight: 700;
+  }
+  .dot { width: 12px; height: 12px; border-radius: 50%; flex: none; }
+  .values { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 14px; }
+  .value { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; }
+  .value h4 { margin: 0 0 6px; font-size: 1rem; }
+  .value p { margin: 0; color: var(--muted); font-size: .94rem; }
+
+  .not-chosen {
+    margin-top: 28px; background: var(--surface); border: 1px dashed var(--line); border-radius: 14px; padding: 18px 22px;
+  }
+  .not-chosen h4 { margin: 0 0 8px; }
+  .not-chosen ul { margin: 0; padding-left: 20px; color: var(--muted); font-size: .94rem; }
+
+  /* síntese */
+  .summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  .summary .box { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
+  .summary .box p { margin: 0; color: var(--muted); }
+
+  .links { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 600;
+    padding: 12px 20px; border-radius: 999px; background: var(--ink); color: #fff;
+  }
+  .btn.alt { background: var(--surface); color: var(--ink); border: 1px solid var(--line); }
+  .refs { font-size: .9rem; color: var(--muted); margin-top: 28px; }
+  .refs li { margin-bottom: 6px; }
+
+  footer { padding: 32px 0 48px; color: var(--muted); font-size: .88rem; border-top: 1px solid var(--line); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#topo">Nome do <span>Projeto</span></a>
+    <ul>
+      <li><a href="#proposta">Proposta</a></li>
+      <li><a href="#b2c">Valor B2C</a></li>
+      <li><a href="#b2b">Valor B2B</a></li>
+      <li><a href="#links">Links</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="topo">
+  <div class="wrap">
+    <span class="tag">Trabalho 1 · Proposta inicial</span>
+    <h1><span class="placeholder">Nome do Projeto</span></h1>
+    <p class="lead">Um assistente de rotina com inteligência artificial que agenda, planeja e se adapta ao estudante, para que ele gaste menos tempo decidindo o que fazer e mais tempo fazendo.</p>
+
+    <div class="info-grid">
+      <div class="info">
+        <small>Disciplina</small>
+        <span class="placeholder">Engenharia de Software (EEL873)</span>
+      </div>
+      <div class="info">
+        <small>Professor(a)</small>
+        <span class="placeholder">Geraldo Xexéo</span>
+      </div>
+      <div class="info">
+        <small>Período</small>
+        <span class="placeholder">2026.2</span>
+      </div>
+      <div class="info">
+        <small>Integrantes</small>
+        <ul>
+          <li><span class="placeholder">Fernando Bruzzi</span></li>
+          <li><span class="placeholder">Giovanni Almeida</span></li>
+          <li><span class="placeholder">Raphaela Barbosa</span></li>
+          <li><span class="placeholder">Pedro Ivo Pinheiro</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- PROPOSTA -->
+<section id="proposta">
+  <div class="wrap">
+    <h2>Proposta inicial informal</h2>
+    <p class="section-intro">O problema, a ideia central e o que o sistema faz.</p>
+
+    <div class="proposal">
+      <p>É normal, para alunos da UFRJ, não encontrar uma rotina facilmente e, quando a encontram, não conseguir segui-la. Por isso, idealizamos um serviço menos focado nas tarefas e mais focado no usuário.</p>
+      <p>A ideia é desenvolver um sistema capaz de realizar duas funções, agendar e planejar, com uma IA integrada que pode gerir a rotina do usuário de forma ativa, sugerir tópicos de estudo e interagir com o usuário como um chatbot. Assim, o usuário pode inserir as datas de seus compromissos e as tarefas semanais tanto manualmente quanto de forma dinâmica, por meio da conversa com o bot. As tarefas são adicionadas a uma lista de afazeres diários e organizadas por prioridade de acordo com critérios como data limite de entrega, urgência e tempo estimado de conclusão.</p>
+      <p>Além disso, a IA, com base nas informações capturadas na interação com o usuário e no reforço (tarefa bem-sucedida, compromisso bem cumprido), é capaz de mudar a abordagem e as técnicas de aprendizado (a técnica Pomodoro, por exemplo) para atingir o objetivo. Com isso, a IA otimiza a execução das tarefas de acordo com o tempo disponível em cada dia e acompanha as sessões que compõem cada tarefa, interrompendo e retomando com base nas técnicas adotadas e no comportamento do usuário.</p>
+      <p>Quando o usuário informa ao sistema a data de suas avaliações, o sistema pode gerar um cronograma de estudos que distribui os conteúdos a serem revisados ao longo das semanas anteriores à prova, de modo que o usuário não precise lembrar a todo momento o que tem de estudar.</p>
+      <p>Dessa maneira, o usuário gasta menos tempo pensando no que fazer para realizar suas tarefas e se desenvolver como profissional, e passa a ter mais tempo para executá-las de forma otimizada.</p>
+    </div>
+
+    <div class="features">
+      <div class="feature">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div>
+        <h3>Agenda</h3>
+        <p>Registro de compromissos e tarefas semanais, inseridos manualmente ou pela conversa com o bot.</p>
+      </div>
+      <div class="feature">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h10M4 18h6"/></svg></div>
+        <h3>Priorização automática</h3>
+        <p>Lista diária ordenada por prazo, urgência e tempo estimado de conclusão.</p>
+      </div>
+      <div class="feature">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></div>
+        <h3>IA conversacional</h3>
+        <p>Chatbot que gere a rotina de forma ativa e sugere tópicos de estudo.</p>
+      </div>
+      <div class="feature">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6"/></svg></div>
+        <h3>Técnicas adaptativas</h3>
+        <p>Ajuste da técnica de estudo (como a Pomodoro) a partir do reforço e do comportamento do usuário.</p>
+      </div>
+      <div class="feature">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 19V9M12 19V5M19 19v-7"/></svg></div>
+        <h3>Sessões acompanhadas</h3>
+        <p>Cada tarefa é dividida em sessões que a IA interrompe e retoma conforme o tempo disponível no dia.</p>
+      </div>
+      <div class="feature">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/></svg></div>
+        <h3>Plano de revisão</h3>
+        <p>A partir da data da avaliação, o conteúdo é distribuído nas semanas anteriores à prova.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- B2C -->
+<section id="b2c">
+  <div class="wrap">
+    <h2>Pirâmide de valor B2C</h2>
+    <p class="section-intro">Usamos os 30 elementos de valor para o consumidor propostos pela Bain &amp; Company (Almquist, Senior e Bloch, 2016). Aqui o cliente é o próprio estudante, que usa o serviço no dia a dia. Os elementos em destaque são os que o produto entrega.</p>
+
+    <div class="pyramid">
+      <div class="level w1" style="background:var(--l5)">
+        <div class="lname">Impacto social</div>
+        <div class="chips"><span class="chip">Autotranscendência</span></div>
+      </div>
+      <div class="level w2" style="background:var(--l4)">
+        <div class="lname">Mudança de vida</div>
+        <div class="chips">
+          <span class="chip">Esperança</span><span class="chip on">Autorrealização</span><span class="chip on">Motivação</span>
+          <span class="chip">Herança</span><span class="chip">Afiliação e pertencimento</span>
+        </div>
+      </div>
+      <div class="level w3" style="background:var(--l3)">
+        <div class="lname">Emocional</div>
+        <div class="chips">
+          <span class="chip on">Reduz a ansiedade</span><span class="chip">Recompensa</span><span class="chip">Nostalgia</span>
+          <span class="chip">Design e estética</span><span class="chip">Status</span><span class="chip on">Bem-estar</span>
+          <span class="chip">Valor terapêutico</span><span class="chip">Diversão</span><span class="chip">Atratividade</span><span class="chip">Dá acesso</span>
+        </div>
+      </div>
+      <div class="level w5" style="background:var(--l1)">
+        <div class="lname">Funcional</div>
+        <div class="chips">
+          <span class="chip on">Economiza tempo</span><span class="chip on">Simplifica</span><span class="chip">Gera dinheiro</span>
+          <span class="chip">Reduz riscos</span><span class="chip on">Organiza</span><span class="chip on">Integra</span>
+          <span class="chip">Conecta</span><span class="chip on">Reduz esforço</span><span class="chip on">Evita aborrecimentos</span>
+          <span class="chip">Reduz custos</span><span class="chip">Qualidade</span><span class="chip">Variedade</span>
+          <span class="chip">Apelo sensorial</span><span class="chip on">Informa</span>
+        </div>
+      </div>
+    </div>
+    <p class="legend"><b>✓</b> elementos de valor entregues pelo produto</p>
+
+    <div class="group-title"><span class="dot" style="background:var(--l1)"></span>Funcional</div>
+    <div class="values">
+      <div class="value"><h4>Economiza tempo</h4><p>O sistema decide a ordem das tarefas e monta o cronograma de revisão. O estudante deixa de gastar tempo planejando e usa esse tempo para executar.</p></div>
+      <div class="value"><h4>Simplifica</h4><p>Agenda, lista de afazeres e plano de estudos ficam em um só lugar, e o cadastro pode ser feito em linguagem natural, conversando com o bot.</p></div>
+      <div class="value"><h4>Organiza</h4><p>É o núcleo do produto. As tarefas são priorizadas por prazo, urgência e tempo estimado, formando uma lista diária clara.</p></div>
+      <div class="value"><h4>Integra</h4><p>Compromissos, tarefas, sessões de estudo e datas de avaliação são tratados em conjunto, e não em ferramentas separadas.</p></div>
+      <div class="value"><h4>Reduz esforço</h4><p>O usuário não precisa lembrar o que estudar nem calcular quanto tempo dedicar a cada assunto, pois a IA distribui o conteúdo.</p></div>
+      <div class="value"><h4>Evita aborrecimentos</h4><p>Diminui o risco de esquecer prazos ou acumular conteúdo na véspera da prova, já que a revisão é espaçada nas semanas anteriores.</p></div>
+      <div class="value"><h4>Informa</h4><p>A IA sugere tópicos de estudo e mostra o que deve ser feito a cada dia, orientando o estudante sobre o próximo passo.</p></div>
+    </div>
+
+    <div class="group-title"><span class="dot" style="background:var(--l3)"></span>Emocional</div>
+    <div class="values">
+      <div class="value"><h4>Reduz a ansiedade</h4><p>Saber que existe um plano e que nada foi esquecido alivia a sensação de sobrecarga, comum na rotina universitária.</p></div>
+      <div class="value"><h4>Bem-estar</h4><p>Ao respeitar o tempo disponível em cada dia e usar técnicas com pausas, como a Pomodoro, o sistema favorece uma rotina mais equilibrada.</p></div>
+    </div>
+
+    <div class="group-title"><span class="dot" style="background:var(--l4)"></span>Mudança de vida</div>
+    <div class="values">
+      <div class="value"><h4>Motivação</h4><p>A IA acompanha o progresso e adapta a abordagem com base no reforço (tarefas concluídas, compromissos cumpridos), ajudando o estudante a manter a constância.</p></div>
+      <div class="value"><h4>Autorrealização</h4><p>A proposta declara como objetivo final o desenvolvimento do usuário como profissional. Criar e sustentar uma rotina é uma habilidade que ele leva para além da faculdade.</p></div>
+    </div>
+
+    <div class="not-chosen">
+      <h4>Por que não escolhemos outros elementos</h4>
+      <ul>
+        <li><b>Gera dinheiro e Reduz custos</b> não são o foco. O ganho é de tempo e organização, não financeiro.</li>
+        <li><b>Status, Nostalgia, Herança e Atratividade</b> não têm relação com a função do produto.</li>
+        <li><b>Diversão e Recompensa</b> não fazem parte da proposta atual, que não prevê mecânicas de jogo ou prêmios. Podem ser avaliados em versões futuras.</li>
+        <li><b>Autotranscendência</b> exigiria um impacto social direto, para além do usuário individual, que a proposta não descreve.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- B2B -->
+<section id="b2b">
+  <div class="wrap">
+    <h2>Pirâmide de valor B2B</h2>
+    <p class="section-intro">Usamos os 40 elementos de valor B2B da Bain &amp; Company (Almquist, Cleghorn e Sherer, 2018).</p>
+
+    <div class="context">
+      <p><b>Cenário considerado.</b> Na visão B2B, o cliente seria uma instituição de ensino (por exemplo, uma universidade, uma coordenação de curso ou um setor de apoio ao estudante) que contrata o serviço para oferecê-lo aos seus alunos. Este cenário é uma hipótese do grupo para fins de análise e ainda precisa ser validado.</p>
+    </div>
+
+    <div class="pyramid">
+      <div class="level w1" style="background:var(--l5)">
+        <div class="lname">Inspiracional</div>
+        <div class="chips"><span class="chip on">Visão</span><span class="chip">Esperança</span><span class="chip on">Responsabilidade social</span></div>
+      </div>
+      <div class="level w2" style="background:var(--l4)">
+        <div class="lname">Individual</div>
+        <div class="chips">
+          <span class="chip">Expansão de rede</span><span class="chip">Empregabilidade</span><span class="chip">Garantia de reputação</span>
+          <span class="chip">Design e estética</span><span class="chip on">Crescimento e desenvolvimento</span>
+          <span class="chip on">Redução de ansiedade</span><span class="chip">Diversão e vantagens</span>
+        </div>
+      </div>
+      <div class="level w3" style="background:var(--l3)">
+        <div class="lname">Facilidade de fazer negócios</div>
+        <div class="chips">
+          <span class="chip on">Economia de tempo</span><span class="chip on">Redução de esforço</span><span class="chip">Menos aborrecimentos</span>
+          <span class="chip on">Informação</span><span class="chip">Transparência</span><span class="chip on">Organização</span>
+          <span class="chip">Simplificação</span><span class="chip">Conexão</span><span class="chip on">Integração</span>
+          <span class="chip on">Disponibilidade</span><span class="chip">Variedade</span><span class="chip on">Configurabilidade</span>
+          <span class="chip">Responsividade</span><span class="chip">Expertise</span><span class="chip">Comprometimento</span>
+          <span class="chip">Estabilidade</span><span class="chip">Afinidade cultural</span><span class="chip">Redução de riscos</span>
+          <span class="chip">Alcance</span><span class="chip">Flexibilidade</span><span class="chip">Qualidade dos componentes</span>
+        </div>
+      </div>
+      <div class="level w4" style="background:var(--l2)">
+        <div class="lname">Funcional</div>
+        <div class="chips">
+          <span class="chip">Aumento de receita</span><span class="chip">Redução de custos</span><span class="chip">Qualidade do produto</span>
+          <span class="chip on">Escalabilidade</span><span class="chip on">Inovação</span>
+        </div>
+      </div>
+      <div class="level w5" style="background:var(--l1)">
+        <div class="lname">Requisitos básicos</div>
+        <div class="chips">
+          <span class="chip on">Atende às especificações</span><span class="chip on">Preço aceitável</span>
+          <span class="chip on">Conformidade regulatória</span><span class="chip on">Padrões éticos</span>
+        </div>
+      </div>
+    </div>
+    <p class="legend"><b>✓</b> elementos de valor entregues pelo produto</p>
+
+    <div class="group-title"><span class="dot" style="background:var(--l1)"></span>Requisitos básicos</div>
+    <div class="values">
+      <div class="value"><h4>Atende às especificações</h4><p>Entrega as funções prometidas de agendar e planejar, com priorização e cronograma de revisão.</p></div>
+      <div class="value"><h4>Preço aceitável</h4><p>Para ser adotado por uma instituição pública ou privada, o custo por aluno precisa caber no orçamento de apoio ao estudante.</p></div>
+      <div class="value"><h4>Conformidade regulatória</h4><p>O sistema lida com dados pessoais e de rotina dos alunos, por isso precisa estar de acordo com a LGPD (Lei nº 13.709/2018).</p></div>
+      <div class="value"><h4>Padrões éticos</h4><p>Uma IA que acompanha o comportamento do usuário deve ser transparente sobre o uso desses dados e não pode usá-los para outros fins.</p></div>
+    </div>
+
+    <div class="group-title"><span class="dot" style="background:var(--l2)"></span>Funcional</div>
+    <div class="values">
+      <div class="value"><h4>Inovação</h4><p>Vai além de uma agenda comum, pois combina chatbot, priorização automática e técnicas de estudo que se adaptam ao aluno.</p></div>
+      <div class="value"><h4>Escalabilidade</h4><p>Por ser um serviço digital com IA, pode atender milhares de estudantes sem exigir uma equipe proporcional de orientadores.</p></div>
+    </div>
+
+    <div class="group-title"><span class="dot" style="background:var(--l3)"></span>Facilidade de fazer negócios</div>
+    <div class="values">
+      <div class="value"><h4>Economia de tempo e Redução de esforço</h4><p>Parte do acompanhamento da rotina de estudos, que hoje dependeria de atendimento individual, passa a ser feita pelo sistema.</p></div>
+      <div class="value"><h4>Organização e Integração</h4><p>Centraliza compromissos, tarefas e datas de avaliação em uma única ferramenta oferecida pela instituição.</p></div>
+      <div class="value"><h4>Informação</h4><p>A IA orienta o estudante sobre o que estudar e quando, apoiando o trabalho pedagógico da instituição.</p></div>
+      <div class="value"><h4>Disponibilidade</h4><p>O chatbot está disponível a qualquer hora, inclusive fora do horário de funcionamento da universidade.</p></div>
+      <div class="value"><h4>Configurabilidade</h4><p>O sistema se ajusta ao tempo disponível e ao comportamento de cada aluno, em vez de impor um modelo único de rotina.</p></div>
+    </div>
+
+    <div class="group-title"><span class="dot" style="background:var(--l4)"></span>Individual</div>
+    <div class="values">
+      <div class="value"><h4>Redução de ansiedade</h4><p>Para o gestor que contrata, é a segurança de oferecer aos alunos um apoio concreto de organização.</p></div>
+      <div class="value"><h4>Crescimento e desenvolvimento</h4><p>Alinha-se ao objetivo da proposta de contribuir para o desenvolvimento profissional dos estudantes atendidos.</p></div>
+    </div>
+
+    <div class="group-title"><span class="dot" style="background:var(--l5)"></span>Inspiracional</div>
+    <div class="values">
+      <div class="value"><h4>Visão</h4><p>Representa uma forma diferente de apoiar o estudante, centrada na pessoa e não apenas na lista de tarefas.</p></div>
+      <div class="value"><h4>Responsabilidade social</h4><p>Ajudar alunos que têm dificuldade de criar e manter uma rotina pode favorecer seu desempenho e sua permanência no curso.</p></div>
+    </div>
+
+    <div class="not-chosen">
+      <h4>Por que não escolhemos outros elementos</h4>
+      <ul>
+        <li><b>Aumento de receita</b> não se aplica, pois o produto não gera receita direta para a instituição.</li>
+        <li><b>Expansão de rede, Empregabilidade e Garantia de reputação</b> dependeriam de resultados ainda não demonstrados.</li>
+        <li><b>Elementos de relacionamento</b> (Responsividade, Expertise, Comprometimento, Estabilidade) dependem da empresa fornecedora e não do produto em si, e ainda não podem ser avaliados.</li>
+        <li><b>Esperança</b> foi considerada mais forte na visão do aluno do que na da instituição.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SÍNTESE -->
+<section id="sintese">
+  <div class="wrap">
+    <h2>Síntese</h2>
+    <div class="summary">
+      <div class="box"><h3>Para o estudante (B2C)</h3><p>O valor principal está na base funcional da pirâmide (economizar tempo, organizar e reduzir esforço), que sustenta ganhos emocionais, como menos ansiedade, e de mudança de vida, como motivação e autorrealização.</p></div>
+      <div class="box"><h3>Para a instituição (B2B)</h3><p>O produto precisa cumprir os requisitos básicos, sobretudo a LGPD. O diferencial está na inovação, na escalabilidade e na facilidade de oferecer apoio de organização a muitos alunos ao mesmo tempo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- LINKS -->
+<section id="links">
+  <div class="wrap">
+    <h2>Links</h2>
+    <div class="links">
+      <a class="btn" href="https://github.com/USUARIO/REPOSITORIO">Repositório no GitHub</a>
+      <a class="btn alt" href="https://USUARIO.github.io/REPOSITORIO/">Página do projeto</a>
+    </div>
+    <ul class="refs">
+      <li>ALMQUIST, E.; SENIOR, J.; BLOCH, N. The Elements of Value. <i>Harvard Business Review</i>, set. 2016.</li>
+      <li>ALMQUIST, E.; CLEGHORN, J.; SHERER, L. The B2B Elements of Value. <i>Harvard Business Review</i>, mar./abr. 2018.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="placeholder">Nome da disciplina</span> · <span class="placeholder">Professor</span> · UFRJ · <span class="placeholder">Período</span>
+  </div>
+</footer>
+
+</body>
+</html>
