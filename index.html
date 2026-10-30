@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nome do Projeto | Engenharia de Software</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="icon" type="image/png" href="logo/logoAi.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"> 
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -23,7 +24,7 @@
     --radius: 16px;
   }
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scroll-padding-top: 76px; }
   body {
     margin: 0; background: var(--bg); color: var(--ink);
     font-family: "Inter", system-ui, sans-serif; line-height: 1.65; font-size: 17px;
@@ -39,9 +40,12 @@
     position: sticky; top: 0; z-index: 10; background: rgba(247,245,240,.92);
     backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);
   }
-  nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 60px; }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
   .logo { font-family: "Fraunces", serif; font-weight: 700; font-size: 1.15rem; color: var(--ink); text-decoration: none; }
   .logo span { color: var(--accent); }
+  .logo { display: inline-flex; align-items: center; gap: 10px; }
+  .logo img { height: 64px; width: auto; }
+  .hero-logo { height: 00px; max-width: 100%; width: auto; display: block; margin-bottom: 24px; }
   nav ul { list-style: none; display: flex; gap: 22px; margin: 0; padding: 0; font-size: .95rem; }
   nav ul a { color: var(--muted); text-decoration: none; font-weight: 500; }
   nav ul a:hover { color: var(--brand); }
@@ -148,7 +152,7 @@
 
 <nav>
   <div class="wrap">
-    <a class="logo" href="#topo">Agend<span>AI</span></a>
+    <a class="logo" href="#topo"><img src="logo/logoAgendaI.png" alt="AgendAI"></a>
     <ul>
       <li><a href="#proposta">Proposta</a></li>
       <li><a href="#b2c">Valor B2C</a></li>
