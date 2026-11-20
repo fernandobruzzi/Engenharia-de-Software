@@ -244,6 +244,31 @@
   .stat p { margin: 4px 0 0; font-size: .86rem; color: var(--muted); }
   .stat.main p { color: rgba(255,255,255,.75); }
 
+  /* casos de uso */
+  .uc { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: 22px; overflow: hidden; }
+  .uc-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; padding: 18px 24px; border-bottom: 1px solid var(--line); background: var(--brand-soft); }
+  .uc-head .uc-id { font-weight: 700; color: var(--brand); font-size: .85rem; letter-spacing: .06em; }
+  .uc-head h3 { margin: 0; font-size: 1.3rem; }
+  .uc-head .who { margin-left: auto; font-size: .85rem; color: var(--muted); }
+  .uc-head .who b { color: var(--ink); }
+  .uc-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; border-bottom: 1px solid var(--line); }
+  .uc-meta div { padding: 12px 24px; font-size: .9rem; border-right: 1px solid var(--line); }
+  .uc-meta div:last-child { border-right: 0; }
+  .uc-meta small { display: block; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; font-weight: 600; color: var(--muted); margin-bottom: 2px; }
+  .uc-body { display: grid; grid-template-columns: 1fr 1fr; }
+  @media (max-width: 820px) { .uc-body { grid-template-columns: 1fr; } }
+  .uc-body > div { padding: 18px 24px; }
+  .uc-body > div + div { border-left: 1px solid var(--line); }
+  @media (max-width: 820px) { .uc-body > div + div { border-left: 0; border-top: 1px solid var(--line); } }
+  .uc h4 { margin: 0 0 8px; font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+  .uc ol { margin: 0 0 14px; padding-left: 22px; font-size: .93rem; }
+  .uc ol li { margin-bottom: 4px; }
+  .uc ul.alt { list-style: none; margin: 0 0 14px; padding: 0; font-size: .9rem; }
+  .uc ul.alt li { margin-bottom: 8px; padding-left: 44px; position: relative; color: var(--ink); }
+  .uc ul.alt li b.step { position: absolute; left: 0; top: 0; font-size: .78rem; background: var(--accent-soft); color: var(--accent); padding: 1px 6px; border-radius: 6px; }
+  .uc ul.alt li .tagf { font-size: .72rem; font-weight: 600; color: var(--muted); }
+  .uc p.small { font-size: .88rem; color: var(--muted); margin: 0; }
+
   footer { padding: 32px 0 48px; color: var(--muted); font-size: .88rem; border-top: 1px solid var(--line); }
 </style>
 </head>
@@ -257,6 +282,7 @@
       <li><a href="#b2c">Valor B2C</a></li>
       <li><a href="#b2b">Valor B2B</a></li>
       <li><a href="#desejos">Desejos</a></li>
+      <li><a href="#casos-de-uso">Casos de Uso</a></li>
       <li><a href="#gestaodoprojeto">Gestão do Projeto</a></li>
       <li><a href="#links">Links</a></li>
     </ul>
@@ -623,6 +649,186 @@
       <div class="box"><h3>Para o estudante (B2C)</h3><p>O valor principal está na base funcional da pirâmide (economizar tempo, organizar e reduzir esforço), que sustenta ganhos emocionais, como menos ansiedade, e de mudança de vida, como motivação e autorrealização.</p></div>
       <div class="box"><h3>Para a instituição (B2B)</h3><p>O produto precisa cumprir os requisitos básicos, sobretudo a LGPD. O diferencial está na inovação, na escalabilidade e na facilidade de oferecer apoio de organização a muitos alunos ao mesmo tempo.</p></div>
     </div>
+  </div>
+</section>
+
+<!-- CASOS DE USO -->
+<section id="casos-de-uso">
+  <div class="wrap">
+    <h2>Casos de Uso</h2>
+
+
+    <div class="table-wrap">
+      <table class="t">
+        <thead><tr><th>Ator</th><th>Tipo</th><th>Objetivos no sistema</th><th>Caso de uso</th></tr></thead>
+        <tbody>
+          <tr><td>Estudante</td><td>Primário (pessoa)</td><td class="wrap-cell">Registrar a rotina, ter um plano para as provas, estudar com foco e acompanhar o próprio progresso</td><td>UC01, UC02, UC03, UC04</td></tr>
+          <tr><td>Serviço de IA</td><td>Secundário (sistema externo)</td><td class="wrap-cell">Interpretar texto livre e dividir conteúdos em sessões de estudo, por meio da API do modelo de linguagem</td><td>UC01, UC02</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="caption">O Acompanhamento Externo (D5), de interesse da UFRJ, da família e de orientadores, ficou fora do escopo desta versão (ver Gestão do Projeto) e por isso não tem caso de uso.</p>
+
+    <!-- UC01 -->
+    <article class="uc">
+      <div class="uc-head">
+        <span class="uc-id">UC01 · D1</span>
+        <h3>Organizar a semana pelo chatbot</h3>
+        <span class="who">Responsável: <b>Fernando Bruzzi</b></span>
+      </div>
+      <div class="uc-meta">
+        <div><small>Atores</small>Estudante (primário), Serviço de IA</div>
+        <div><small>Pré-condição</small>Estudante autenticado</div>
+        <div><small>Gatilho</small>Estudante abre o chat do AgendAI</div>
+        <div><small>Pós-condição</small>Compromissos na agenda e tarefas priorizadas na lista diária</div>
+      </div>
+      <div class="uc-body">
+        <div>
+          <h4>Fluxo principal</h4>
+          <ol>
+            <li>Estudante descreve em texto livre os compromissos e tarefas da semana (por exemplo, "prova de Cálculo na sexta, lista de Física até quarta, estágio segunda e quarta das 14h às 18h").</li>
+            <li>Sistema envia a mensagem e a agenda atual do estudante ao Serviço de IA.</li>
+            <li>Serviço de IA devolve os itens identificados, com tipo, título, data, horário e duração estimada.</li>
+            <li>Sistema apresenta a lista de itens interpretados para conferência.</li>
+            <li>Estudante confirma os itens.</li>
+            <li>Sistema grava os compromissos na agenda, grava as tarefas e calcula a prioridade de cada uma por prazo, urgência e tempo estimado.</li>
+            <li>Sistema exibe a lista do dia priorizada e responde no chat com um resumo da semana.</li>
+          </ol>
+        </div>
+        <div>
+          <h4>Fluxos alternativos</h4>
+          <ul class="alt">
+            <li><b class="step">2a</b>Serviço de IA indisponível: sistema avisa e abre o formulário de cadastro manual; estudante preenche os itens e o caso volta ao passo 4. <span class="tagf">recuperável</span></li>
+            <li><b class="step">3a</b>Item sem data ou horário: sistema pergunta no chat o dado que falta; estudante responde e o caso volta ao passo 4. <span class="tagf">recuperável</span></li>
+            <li><b class="step">5a</b>Item interpretado errado: estudante corrige o item na lista e o caso volta ao passo 5. <span class="tagf">recuperável</span></li>
+            <li><b class="step">5b</b>Estudante cancela: nada é gravado e o caso termina. <span class="tagf">não recuperável</span></li>
+            <li><b class="step">6a</b>Conflito com um compromisso existente: sistema mostra o choque e sugere outro horário; estudante escolhe e o caso volta ao passo 6. <span class="tagf">recuperável</span></li>
+          </ul>
+          <h4>Variações de dados</h4>
+          <p class="small">Compromisso: data, início, fim e recorrência (única ou semanal). Tarefa: disciplina, prazo e tempo estimado. Datas podem vir em linguagem natural ("amanhã", "sexta que vem").</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- UC02 -->
+    <article class="uc">
+      <div class="uc-head">
+        <span class="uc-id">UC02 · D2</span>
+        <h3>Gerar plano de revisão para uma prova</h3>
+        <span class="who">Responsável: <b>Giovanni Almeida</b></span>
+      </div>
+      <div class="uc-meta">
+        <div><small>Atores</small>Estudante (primário), Serviço de IA</div>
+        <div><small>Pré-condição</small>Estudante autenticado e com horários disponíveis informados no perfil</div>
+        <div><small>Gatilho</small>Estudante cadastra uma nova avaliação</div>
+        <div><small>Pós-condição</small>Sessões de revisão agendadas até a data da prova</div>
+      </div>
+      <div class="uc-body">
+        <div>
+          <h4>Fluxo principal</h4>
+          <ol>
+            <li>Estudante informa a disciplina, a data da prova e os conteúdos cobrados.</li>
+            <li>Sistema identifica os horários livres do estudante entre hoje e a véspera da prova.</li>
+            <li>Sistema solicita ao Serviço de IA a divisão dos conteúdos em sessões de revisão, com o tempo estimado de cada uma.</li>
+            <li>Sistema distribui as sessões nos horários livres, espaçando as revisões e reservando a véspera para uma revisão geral.</li>
+            <li>Sistema apresenta o plano proposto em formato de calendário.</li>
+            <li>Estudante aceita o plano.</li>
+            <li>Sistema grava as sessões na agenda e as inclui na lista diária dos dias correspondentes.</li>
+          </ol>
+        </div>
+        <div>
+          <h4>Fluxos alternativos</h4>
+          <ul class="alt">
+            <li><b class="step">1a</b>Data da prova já passou ou é hoje: sistema recusa e pede outra data; o caso volta ao passo 1. <span class="tagf">recuperável</span></li>
+            <li><b class="step">3a</b>Serviço de IA indisponível: sistema divide os conteúdos em partes iguais por tópico e segue para o passo 4. <span class="tagf">recuperável</span></li>
+            <li><b class="step">4a</b>Tempo livre insuficiente: sistema mostra as horas necessárias e as disponíveis e oferece priorizar conteúdos ou liberar compromissos flexíveis; estudante escolhe e o caso volta ao passo 4. <span class="tagf">recuperável</span></li>
+            <li><b class="step">6a</b>Estudante quer ajustar: move sessões no calendário ou pede a mudança no chat; sistema recalcula e o caso volta ao passo 5. <span class="tagf">recuperável</span></li>
+            <li><b class="step">6b</b>Estudante rejeita o plano: a avaliação fica registrada sem plano e o caso termina. <span class="tagf">não recuperável</span></li>
+          </ul>
+          <h4>Variações de dados</h4>
+          <p class="small">Conteúdos podem ser informados como lista de tópicos ou como trecho da ementa colado. Cada tópico pode ter um peso (fácil, médio, difícil), que muda a quantidade de sessões.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- UC03 -->
+    <article class="uc">
+      <div class="uc-head">
+        <span class="uc-id">UC03 · D3</span>
+        <h3>Realizar sessão de estudo guiada</h3>
+        <span class="who">Responsável: <b>Raphaela Barbosa</b></span>
+      </div>
+      <div class="uc-meta">
+        <div><small>Ator</small>Estudante (primário)</div>
+        <div><small>Pré-condição</small>Existe uma sessão de estudo planejada para hoje</div>
+        <div><small>Gatilho</small>Estudante inicia a próxima sessão da lista diária</div>
+        <div><small>Pós-condição</small>Sessão registrada, progresso da tarefa atualizado e técnica ajustada</div>
+      </div>
+      <div class="uc-body">
+        <div>
+          <h4>Fluxo principal</h4>
+          <ol>
+            <li>Estudante seleciona a próxima sessão na lista do dia.</li>
+            <li>Sistema mostra o tópico, o objetivo da sessão e a técnica recomendada (por exemplo, Pomodoro 25/5) e inicia o cronômetro.</li>
+            <li>Ao fim de cada bloco de foco, sistema avisa e conduz a pausa.</li>
+            <li>Sistema repete os blocos até completar o tempo previsto da sessão.</li>
+            <li>Sistema pergunta se o objetivo foi cumprido e qual foi a dificuldade.</li>
+            <li>Estudante responde.</li>
+            <li>Sistema registra a sessão como concluída, atualiza o progresso da tarefa e ajusta a técnica das próximas sessões com base na resposta (reforço).</li>
+          </ol>
+        </div>
+        <div>
+          <h4>Fluxos alternativos</h4>
+          <ul class="alt">
+            <li><b class="step">2a</b>Estudante prefere outra técnica: escolhe na lista e o caso volta ao passo 2. <span class="tagf">recuperável</span></li>
+            <li><b class="step">3a</b>Estudante pausa a sessão e retoma no mesmo dia: sistema guarda o tempo cumprido e o caso volta ao passo 3. <span class="tagf">recuperável</span></li>
+            <li><b class="step">3b</b>Estudante abandona a sessão: sistema registra o tempo parcial, reagenda o restante no próximo horário livre e o caso termina. <span class="tagf">não recuperável</span></li>
+            <li><b class="step">6a</b>Objetivo não cumprido: sistema cria uma sessão complementar no próximo horário livre e segue para o passo 7. <span class="tagf">recuperável</span></li>
+          </ul>
+          <h4>Variações de dados</h4>
+          <p class="small">Técnicas: Pomodoro 25/5, Pomodoro 50/10 ou bloco livre. Dificuldade em escala de 1 a 5. O ajuste por reforço altera a duração dos blocos e o intervalo entre sessões.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- UC04 -->
+    <article class="uc">
+      <div class="uc-head">
+        <span class="uc-id">UC04 · D4</span>
+        <h3>Revisar a semana e replanejar pendências</h3>
+        <span class="who">Responsável: <b>Pedro Ivo Pinheiro</b></span>
+      </div>
+      <div class="uc-meta">
+        <div><small>Ator</small>Estudante (primário)</div>
+        <div><small>Pré-condição</small>Estudante autenticado</div>
+        <div><small>Gatilho</small>Estudante abre a tela "Minha semana"</div>
+        <div><small>Pós-condição</small>Tarefas atrasadas remanejadas e lista diária recalculada</div>
+      </div>
+      <div class="uc-body">
+        <div>
+          <h4>Fluxo principal</h4>
+          <ol>
+            <li>Estudante abre a tela "Minha semana".</li>
+            <li>Sistema mostra as tarefas concluídas, pendentes e atrasadas, as horas estudadas por disciplina e as sessões interrompidas.</li>
+            <li>Sistema destaca as tarefas atrasadas e sugere um novo horário para cada uma, antes do prazo.</li>
+            <li>Estudante aceita as sugestões.</li>
+            <li>Sistema remaneja as tarefas na agenda e recalcula a prioridade da lista diária.</li>
+            <li>Sistema exibe a semana seguinte atualizada e uma mensagem de incentivo baseada no progresso.</li>
+          </ol>
+        </div>
+        <div>
+          <h4>Fluxos alternativos</h4>
+          <ul class="alt">
+            <li><b class="step">2a</b>Ainda não há histórico (primeira semana de uso): sistema explica como o acompanhamento funciona e o caso termina. <span class="tagf">não recuperável</span></li>
+            <li><b class="step">3a</b>Nenhuma tarefa atrasada: o caso segue direto para o passo 6. <span class="tagf">recuperável</span></li>
+            <li><b class="step">4a</b>Estudante recusa a sugestão de uma tarefa: escolhe outro horário ou descarta a tarefa; o caso volta ao passo 5. <span class="tagf">recuperável</span></li>
+            <li><b class="step">5a</b>Não há horário livre antes do prazo: sistema avisa o risco e pede que o estudante escolha qual tarefa adiar; o caso volta ao passo 5. <span class="tagf">recuperável</span></li>
+          </ul>
+          <h4>Variações de dados</h4>
+          <p class="small">Período exibido: semana atual ou mês. Filtro opcional por disciplina. Horas estudadas contam apenas as sessões concluídas ou parciais registradas no UC03.</p>
+        </div>
+      </div>
+    </article>
   </div>
 </section>
 
