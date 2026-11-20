@@ -160,6 +160,90 @@
   .refs { font-size: .9rem; color: var(--muted); margin-top: 28px; }
   .refs li { margin-bottom: 6px; }
 
+  /* planejamento */
+  .toc { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+  .toc a {
+    text-decoration: none; font-size: .88rem; font-weight: 600; color: var(--brand);
+    background: var(--brand-soft); padding: 6px 12px; border-radius: 999px;
+  }
+  .sub { padding-top: 40px; scroll-margin-top: 70px; }
+  .sub > h3 { font-size: 1.5rem; display: flex; align-items: baseline; gap: 10px; }
+  .sub > h3 .num { font-family: "Inter", sans-serif; font-size: .85rem; font-weight: 600; color: var(--accent); }
+  .sub > p.lead2 { color: var(--muted); max-width: 72ch; }
+
+  .scope-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+  .scope-box { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px 22px; }
+  .scope-box h4 { margin: 0 0 8px; font-size: 1rem; }
+  .scope-box ul { margin: 0; padding-left: 20px; color: var(--muted); font-size: .94rem; }
+  .scope-box li { margin-bottom: 4px; }
+  .scope-box.in { border-top: 4px solid var(--ok); }
+  .scope-box.out { border-top: 4px solid var(--accent); }
+
+  .table-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; margin: 14px 0; }
+  table.t { width: 100%; border-collapse: collapse; font-size: .9rem; font-variant-numeric: tabular-nums; }
+  table.t th, table.t td { padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  table.t td.wrap-cell { white-space: normal; min-width: 220px; }
+  table.t th { background: var(--ink); color: #fff; font-weight: 600; font-size: .82rem; }
+  table.t td.n, table.t th.n { text-align: right; }
+  table.t tr.crit td:first-child { color: var(--accent); font-weight: 700; }
+  table.t tr.total td { font-weight: 700; background: var(--brand-soft); }
+  .caption { font-size: .84rem; color: var(--muted); margin: -4px 0 18px; }
+
+  /* EAP */
+  .wbs-root { display: flex; justify-content: center; margin-bottom: 18px; }
+  .wbs-node { border-radius: 10px; padding: 8px 12px; font-size: .86rem; font-weight: 600; line-height: 1.3; }
+  .wbs-node .act { display: inline-block; margin-left: 4px; font-size: .72rem; font-weight: 700; padding: 1px 6px; border-radius: 999px; background: rgba(255,255,255,.25); }
+  .wbs-root .wbs-node { background: var(--accent); color: #fff; font-size: 1rem; padding: 12px 22px; }
+  .wbs-cols { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  @media (max-width: 860px) { .wbs-cols { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); } }
+  .wbs-col > .wbs-node { background: var(--ink); color: #fff; margin-bottom: 10px; }
+  .wbs-col ul { list-style: none; margin: 0; padding: 0 0 0 12px; border-left: 2px solid var(--line); }
+  .wbs-col li { margin: 0 0 8px; }
+  .wbs-col li > .wbs-node { background: var(--brand); color: #fff; }
+  .wbs-col li ul { margin-top: 8px; }
+  .wbs-col li li > .wbs-node { background: var(--brand-soft); color: var(--ink); font-weight: 500; }
+  .wbs-col li li > .wbs-node .act { background: var(--brand); color: #fff; font-size: .78rem; padding: 2px 8px; }
+
+  /* diagramas */
+  .diagram { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 12px; margin: 14px 0; }
+  .diagram svg { display: block; min-width: 1000px; width: 100%; height: auto; }
+  .key { display: flex; flex-wrap: wrap; gap: 18px; font-size: .86rem; color: var(--muted); margin-bottom: 8px; }
+  .key span { display: inline-flex; align-items: center; gap: 6px; }
+  .sw { width: 22px; height: 10px; border-radius: 3px; display: inline-block; }
+
+  .gantt { display: grid; grid-template-columns: 190px repeat(39, minmax(16px, 1fr)); min-width: 860px; font-size: .78rem; }
+  .gantt .h { color: var(--muted); text-align: center; padding: 4px 0; border-bottom: 1px solid var(--line); }
+  #net { min-width: 1300px; }
+  .gantt .wk { white-space: nowrap; overflow: hidden; font-weight: 600; color: var(--ink); border-left: 1px solid var(--line); text-align: left; padding-left: 4px; }
+  .gantt .lbl { padding: 6px 8px 6px 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #f0ede6; }
+  .gantt .lbl b { display: inline-block; width: 18px; }
+  .gantt .lbl.crit b { color: var(--accent); }
+  .gantt .cell { border-bottom: 1px solid #f0ede6; position: relative; }
+  .gantt .wkline { border-left: 1px solid var(--line); }
+  .gantt .bar { align-self: center; height: 14px; border-radius: 4px; background: var(--brand); margin: 0 1px; }
+  .gantt .bar.crit { background: var(--accent); }
+  .gantt .bar.res { background: repeating-linear-gradient(45deg, var(--ok) 0 3px, var(--ok-soft) 3px 6px); border: 1px dashed var(--ok); }
+  .gantt .lbl.res b { color: var(--ok); }
+  table.t tr.buf td { background: var(--ok-soft); }
+  table.t tr.buf td:first-child { color: var(--ok); font-weight: 700; }
+  .context ul { color: var(--ink); }
+  .gantt .bar.loe { background: repeating-linear-gradient(45deg, #c9c4b8 0 4px, #e4e0d6 4px 8px); }
+
+  .chart-box { position: relative; }
+  .tip {
+    position: absolute; pointer-events: none; background: var(--ink); color: #fff; font-size: .8rem;
+    padding: 6px 10px; border-radius: 8px; white-space: nowrap; opacity: 0; transition: opacity .1s;
+  }
+
+  .bac-hero { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 18px 0; }
+  .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; }
+  .stat small { display: block; color: var(--muted); font-size: .75rem; text-transform: uppercase; letter-spacing: .08em; font-weight: 600; }
+  .stat strong { font-family: "Fraunces", serif; font-size: 1.9rem; line-height: 1.2; }
+  .stat.main { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .stat.main small { color: rgba(255,255,255,.7); }
+  .stat p { margin: 4px 0 0; font-size: .86rem; color: var(--muted); }
+  .stat.main p { color: rgba(255,255,255,.75); }
+
   footer { padding: 32px 0 48px; color: var(--muted); font-size: .88rem; border-top: 1px solid var(--line); }
 </style>
 </head>
@@ -173,6 +257,7 @@
       <li><a href="#b2c">Valor B2C</a></li>
       <li><a href="#b2b">Valor B2B</a></li>
       <li><a href="#desejos">Desejos</a></li>
+      <li><a href="#planejamento">Gestão do Projeto</a></li>
       <li><a href="#links">Links</a></li>
     </ul>
   </div>
@@ -540,6 +625,512 @@
     </div>
   </div>
 </section>
+
+<!-- PLANEJAMENTO -->
+<section id="planejamento">
+  <div class="wrap">
+    <h2>Gestão do Projeto</h2>
+    
+    <!-- <nav class="toc" aria-label="Itens do planejamento">
+      <a href="#escopo">1. Escopo</a>
+      <a href="#eap">2. EAP</a>
+      <a href="#rede">3. Diagrama de rede</a>
+      <a href="#cronograma">4. Cronograma</a>
+      <a href="#recursos">5. Recursos</a>
+      <a href="#orcamento">6. Orçamento e BAC</a>
+    </nav> -->
+
+    <!-- 1. ESCOPO -->
+    <div class="sub" id="escopo">
+      <h3><span class="num">01</span>Descrição do escopo</h3>
+      <div class="proposal">
+        <p><b>Objetivo.</b> Entregar a primeira versão (MVP) do AgendAI, uma aplicação web responsiva em que o estudante cadastra compromissos e tarefas, recebe uma lista diária priorizada, conversa com um assistente de IA, gera um plano de revisão para suas provas e estuda em sessões que se adaptam ao seu comportamento.</p>
+        <p><b>Produto final.</b> Sistema implantado em nuvem, validado em um piloto com estudantes da UFRJ, acompanhado de manual de uso e aceito formalmente pelo professor da disciplina, que atua como patrocinador do projeto.</p>
+        <p><b>Duração e equipe.</b> 47 dias úteis (cerca de 9 semanas e meia), já incluindo 6 dias de reserva de prazo para o pior cenário, com uma equipe de quatro pessoas.</p>
+      </div>
+
+      <div class="scope-grid">
+        <div class="scope-box in">
+          <h4>Dentro do escopo</h4>
+          <ul>
+            <li>Cadastro de usuário, login e perfil de estudo (horários disponíveis, preferências).</li>
+            <li>Agenda de compromissos e de tarefas semanais, com inserção manual.</li>
+            <li>Priorização automática da lista diária por prazo, urgência e tempo estimado.</li>
+            <li>Chatbot com modelo de linguagem que responde dúvidas sobre a rotina e cadastra tarefas a partir de linguagem natural.</li>
+            <li>Geração do plano de revisão a partir das datas das avaliações e dos conteúdos informados.</li>
+            <li>Sessões de estudo com técnicas como Pomodoro, ajustadas por regras de reforço (tarefas concluídas, sessões interrompidas).</li>
+            <li>Integração, homologação, piloto com estudantes, implantação em nuvem e manual do usuário.</li>
+          </ul>
+        </div>
+        <div class="scope-box out">
+          <h4>Fora do escopo (nesta versão)</h4>
+          <ul>
+            <li>Aplicativos nativos para Android e iOS.</li>
+            <li>Integração com sistemas da UFRJ (SIGA, ambiente virtual) e com calendários externos.</li>
+            <li>Painel administrativo para instituições (cenário B2B).</li>
+            <li>Gamificação, recompensas e funções sociais.</li>
+            <li>Treinamento de um modelo de IA próprio; o projeto usa um modelo de linguagem já existente via API.</li>
+            <li>Suporte e manutenção após o encerramento.</li>
+          </ul>
+        </div>
+        <div class="scope-box">
+          <h4>Premissas</h4>
+          <ul>
+            <li>Os quatro integrantes têm dedicação equivalente a tempo integral nos dias alocados.</li>
+            <li>Há estudantes voluntários disponíveis para o piloto.</li>
+            <li>A API do modelo de linguagem permanece disponível e com preço estável durante o projeto.</li>
+          </ul>
+        </div>
+        <div class="scope-box">
+          <h4>Restrições e critérios de aceitação</h4>
+          <ul>
+            <li>Entrega dentro do período letivo 2026.2.</li>
+            <li>Tratamento de dados pessoais conforme a LGPD, com consentimento explícito.</li>
+            <li>Aceitação: todas as funções acima são homologadas e passam no piloto, sem defeito crítico aberto.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. EAP -->
+    <div class="sub" id="eap">
+      <h3><span class="num">02</span>EAP (Estrutura Analítica do Projeto)</h3>
+      <p class="lead2">A EAP decompõe todo o trabalho autorizado em cinco grupos orientados a entregas. As etiquetas indicam a atividade do cronograma (A a N) que executa cada pacote de trabalho.</p>
+
+      <div class="wbs-root"><div class="wbs-node">AgendAI · versão 1.0</div></div>
+      <div class="wbs-cols">
+        <div class="wbs-col">
+          <div class="wbs-node">1 Gestão</div>
+          <ul>
+            <li><div class="wbs-node">1.1 Planejamento <span class="act">A</span></div></li>
+            <li><div class="wbs-node">1.2 Acompanhamento <span class="act">Apoio</span></div></li>
+            <li><div class="wbs-node">1.3 Aceitação e encerramento <span class="act">N</span></div></li>
+          </ul>
+        </div>
+        <div class="wbs-col">
+          <div class="wbs-node">2 Concepção</div>
+          <ul>
+            <li><div class="wbs-node">2.1 Requisitos e histórias de usuário <span class="act">B</span></div></li>
+            <li><div class="wbs-node">2.2 Protótipo de interface <span class="act">C</span></div></li>
+            <li><div class="wbs-node">2.3 Arquitetura e modelo de dados <span class="act">D</span></div></li>
+          </ul>
+        </div>
+        <div class="wbs-col">
+          <div class="wbs-node">3 Produto</div>
+          <ul>
+            <li><div class="wbs-node">3.1 Plataforma base</div>
+              <ul>
+                <li><div class="wbs-node">3.1.1 Back-end, banco e autenticação <span class="act">E</span></div></li>
+                <li><div class="wbs-node">3.1.2 Front-end base <span class="act">F</span></div></li>
+              </ul>
+            </li>
+            <li><div class="wbs-node">3.2 Agenda e tarefas <span class="act">G</span></div>
+              <ul>
+                <li><div class="wbs-node">3.2.1 Compromissos</div></li>
+                <li><div class="wbs-node">3.2.2 Priorização diária</div></li>
+              </ul>
+            </li>
+            <li><div class="wbs-node">3.3 Assistente de IA <span class="act">H</span></div>
+              <ul>
+                <li><div class="wbs-node">3.3.1 Chatbot</div></li>
+                <li><div class="wbs-node">3.3.2 Cadastro por linguagem natural</div></li>
+              </ul>
+            </li>
+            <li><div class="wbs-node">3.4 Estudos</div>
+              <ul>
+                <li><div class="wbs-node">3.4.1 Plano de revisão <span class="act">I</span></div></li>
+                <li><div class="wbs-node">3.4.2 Sessões e técnicas adaptativas <span class="act">J</span></div></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="wbs-col">
+          <div class="wbs-node">4 Verificação</div>
+          <ul>
+            <li><div class="wbs-node">4.1 Integração e homologação <span class="act">K</span></div></li>
+            <li><div class="wbs-node">4.2 Piloto com estudantes <span class="act">L</span></div></li>
+          </ul>
+        </div>
+        <div class="wbs-col">
+          <div class="wbs-node">5 Implantação <span class="act">M</span></div>
+          <ul>
+            <li><div class="wbs-node">5.1 Deploy em nuvem</div></li>
+            <li><div class="wbs-node">5.2 Manual do usuário</div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. REDE -->
+    <div class="sub" id="rede">
+      <h3><span class="num">03</span>Diagrama de rede</h3>
+      <p class="lead2">Tabela de atividades com duração em dias úteis e predecessoras, seguida do diagrama de atividades em nós. A ida (cedo) e a volta (tarde) pela rede dão as datas e as folgas. Os valores são dias decorridos: uma atividade com início cedo 7 começa no dia útil 8.</p>
+
+      <div class="table-wrap">
+        <table class="t">
+          <thead><tr>
+            <th>Ativ.</th><th>Trabalho</th><th class="n">Dias</th><th>Após</th>
+            <th class="n">Início cedo</th><th class="n">Fim cedo</th><th class="n">Início tarde</th><th class="n">Fim tarde</th><th class="n">Folga</th>
+          </tr></thead>
+          <tbody>
+            <tr class="crit"><td>A</td><td>Planejamento do projeto</td><td class="n">3</td><td>—</td><td class="n">0</td><td class="n">3</td><td class="n">0</td><td class="n">3</td><td class="n">0</td></tr>
+            <tr class="crit"><td>B</td><td>Requisitos e histórias de usuário</td><td class="n">4</td><td>A</td><td class="n">3</td><td class="n">7</td><td class="n">3</td><td class="n">7</td><td class="n">0</td></tr>
+            <tr class="crit"><td>C</td><td>Protótipo de interface</td><td class="n">4</td><td>B</td><td class="n">7</td><td class="n">11</td><td class="n">7</td><td class="n">11</td><td class="n">0</td></tr>
+            <tr><td>D</td><td>Arquitetura e modelo de dados</td><td class="n">3</td><td>B</td><td class="n">7</td><td class="n">10</td><td class="n">8</td><td class="n">11</td><td class="n">1</td></tr>
+            <tr><td>E</td><td>Back-end, banco e autenticação</td><td class="n">5</td><td>D</td><td class="n">10</td><td class="n">15</td><td class="n">11</td><td class="n">16</td><td class="n">1</td></tr>
+            <tr class="crit"><td>F</td><td>Front-end base</td><td class="n">5</td><td>C, D</td><td class="n">11</td><td class="n">16</td><td class="n">11</td><td class="n">16</td><td class="n">0</td></tr>
+            <tr class="crit"><td>G</td><td>Agenda e tarefas com priorização</td><td class="n">6</td><td>E, F</td><td class="n">16</td><td class="n">22</td><td class="n">16</td><td class="n">22</td><td class="n">0</td></tr>
+            <tr><td>H</td><td>Chatbot e cadastro por linguagem natural</td><td class="n">7</td><td>E</td><td class="n">15</td><td class="n">22</td><td class="n">20</td><td class="n">27</td><td class="n">5</td></tr>
+            <tr><td>I</td><td>Plano de revisão</td><td class="n">4</td><td>G</td><td class="n">22</td><td class="n">26</td><td class="n">23</td><td class="n">27</td><td class="n">1</td></tr>
+            <tr class="crit"><td>J</td><td>Sessões e técnicas adaptativas</td><td class="n">5</td><td>G</td><td class="n">22</td><td class="n">27</td><td class="n">22</td><td class="n">27</td><td class="n">0</td></tr>
+            <tr class="buf"><td>R1</td><td>Reserva técnica (pior cenário do desenvolvimento)</td><td class="n">3</td><td>H, I, J</td><td class="n">27</td><td class="n">30</td><td class="n">27</td><td class="n">30</td><td class="n">—</td></tr>
+            <tr class="crit"><td>K</td><td>Integração e homologação</td><td class="n">6</td><td>R1</td><td class="n">30</td><td class="n">36</td><td class="n">30</td><td class="n">36</td><td class="n">0</td></tr>
+            <tr class="crit"><td>L</td><td>Piloto com estudantes</td><td class="n">3</td><td>K</td><td class="n">36</td><td class="n">39</td><td class="n">36</td><td class="n">39</td><td class="n">0</td></tr>
+            <tr class="buf"><td>R2</td><td>Reserva para correções do piloto</td><td class="n">3</td><td>L</td><td class="n">39</td><td class="n">42</td><td class="n">39</td><td class="n">42</td><td class="n">—</td></tr>
+            <tr class="crit"><td>M</td><td>Implantação e manual</td><td class="n">3</td><td>R2</td><td class="n">42</td><td class="n">45</td><td class="n">42</td><td class="n">45</td><td class="n">0</td></tr>
+            <tr class="crit"><td>N</td><td>Aceitação e encerramento</td><td class="n">2</td><td>M</td><td class="n">45</td><td class="n">47</td><td class="n">45</td><td class="n">47</td><td class="n">0</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="caption">Letras em laranja: atividades do caminho crítico. Em verde: reservas de prazo. O acompanhamento da gestão (1.2) é nível de esforço (LOE) e corre em paralelo, fora da rede.</p>
+
+      <div class="context">
+        <p><b>Preparação para o pior cenário.</b> Pela definição do método do caminho crítico, as atividades críticas sempre têm folga zero. Para protegê-las, inserimos dois blocos de folga explícitos (reservas de prazo) nos pontos de maior risco, e a homologação passou de 4 para 6 dias.</p>
+        <ul style="margin:10px 0 0; padding-left:20px">
+          <li><b>R1, 3 dias, antes da integração:</b> é onde convergem as três frentes mais incertas (chatbot com IA, plano de revisão e sessões adaptativas). Um atraso de até 3 dias em qualquer uma delas, somado à folga própria de H e I, não empurra a homologação.</li>
+          <li><b>K, 6 dias:</b> a integração ganhou 2 dias de homologação com o professor (patrocinador) e o GP, para validar cada critério de aceitação antes do piloto.</li>
+          <li><b>R2, 3 dias, depois do piloto:</b> reserva para corrigir o que os estudantes encontrarem, sem comprometer a implantação nem a entrega.</li>
+        </ul>
+        <p style="margin-top:10px">As reservas não têm trabalho planejado. Se não forem usadas, a equipe adianta as atividades seguintes; se forem consumidas, a data final de entrega (dia 47) continua valendo.</p>
+      </div>
+
+      <div class="key">
+        <span><i class="sw" style="background:var(--accent)"></i>Caminho crítico</span>
+        <span><i class="sw" style="background:var(--brand)"></i>Atividade com folga</span>
+        <span><i class="sw" style="background:repeating-linear-gradient(45deg,var(--ok) 0 3px,var(--ok-soft) 3px 6px)"></i>Reserva de prazo</span>
+        <span>Nó: início cedo · duração · fim cedo / início tarde · folga · fim tarde</span>
+      </div>
+      <div class="diagram"><svg id="net" viewBox="0 0 1430 344" role="img" aria-label="Diagrama de rede das atividades A a N com reservas de prazo"></svg></div>
+      <p class="caption"><b>Caminho crítico:</b> A → B → C → F → G → J → R1 → K → L → R2 → M → N, com 3 + 4 + 4 + 5 + 6 + 5 + 3 + 6 + 3 + 3 + 3 + 2 = 47 dias úteis, dos quais 41 são de trabalho e 6 de reserva. O chatbot (H) tem 5 dias de folga própria e ainda é protegido por R1, ou seja, pode atrasar até 8 dias antes de afetar a homologação.</p>
+    </div>
+
+    <!-- 4. CRONOGRAMA -->
+    <div class="sub" id="cronograma">
+      <h3><span class="num">04</span>Cronograma (baseline)</h3>
+      <p class="lead2">Linha de base aprovada, com cada atividade programada no início cedo. A entrega está prevista para o fim do dia útil 47, já contando as duas reservas de prazo. Esse é o compromisso contra o qual a execução será comparada; mudanças posteriores vão para uma previsão atualizada, sem alterar a baseline.</p>
+      <div class="key">
+        <span><i class="sw" style="background:var(--accent)"></i>Caminho crítico</span>
+        <span><i class="sw" style="background:var(--brand)"></i>Com folga</span>
+        <span><i class="sw" style="background:repeating-linear-gradient(45deg,var(--ok) 0 3px,var(--ok-soft) 3px 6px)"></i>Reserva de prazo</span>
+        <span><i class="sw" style="background:repeating-linear-gradient(45deg,#c9c4b8 0 4px,#e4e0d6 4px 8px)"></i>Nível de esforço (apoio)</span>
+      </div>
+      <div class="diagram"><div class="gantt" id="gantt"></div></div>
+      <div class="table-wrap">
+        <table class="t">
+          <thead><tr><th>Marco</th><th class="n">Dia útil</th><th>Critério de conclusão</th></tr></thead>
+          <tbody>
+            <tr><td>Plano aprovado</td><td class="n">3</td><td class="wrap-cell">Escopo, EAP, cronograma e orçamento aceitos pelo professor</td></tr>
+            <tr><td>Concepção concluída</td><td class="n">11</td><td class="wrap-cell">Histórias priorizadas, protótipo validado e arquitetura documentada</td></tr>
+            <tr><td>Funções implementadas</td><td class="n">27</td><td class="wrap-cell">Agenda, priorização, chatbot, plano de revisão e sessões funcionando (prazo máximo, usando R1: dia 30)</td></tr>
+            <tr><td>Sistema homologado</td><td class="n">36</td><td class="wrap-cell">Integração concluída e cada critério de aceitação validado com o professor</td></tr>
+            <tr><td>Piloto concluído</td><td class="n">39</td><td class="wrap-cell">Relatório do piloto com estudantes e lista de correções (prazo máximo, usando R2: dia 42)</td></tr>
+            <tr><td>Entrega final</td><td class="n">47</td><td class="wrap-cell">Sistema no ar, manual publicado e termo de aceite</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 5. RECURSOS -->
+    <div class="sub" id="recursos">
+      <h3><span class="num">05</span>Recursos necessários</h3>
+      <p class="lead2">A equipe tem quatro papéis. Cada pessoa recebe um custo diário de referência (8 horas), e os recursos não humanos entram pelo valor previsto. O esforço está em pessoa-dia e foi distribuído de forma que ninguém fique em duas atividades ao mesmo tempo.</p>
+
+      <div class="table-wrap">
+        <table class="t">
+          <thead><tr><th>Sigla</th><th>Papel</th><th class="n">Custo/hora</th><th class="n">Custo/dia</th></tr></thead>
+          <tbody>
+            <tr><td>GP</td><td>Gerente de projeto e analista de requisitos</td><td class="n">R$ 80</td><td class="n">R$ 640</td></tr>
+            <tr><td>BE</td><td>Desenvolvedor(a) back-end</td><td class="n">R$ 75</td><td class="n">R$ 600</td></tr>
+            <tr><td>FE</td><td>Desenvolvedor(a) front-end e UX</td><td class="n">R$ 70</td><td class="n">R$ 560</td></tr>
+            <tr><td>IA</td><td>Engenheiro(a) de IA e qualidade</td><td class="n">R$ 85</td><td class="n">R$ 680</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-wrap">
+        <table class="t">
+          <thead><tr>
+            <th>Ativ.</th><th>Trabalho</th><th class="n">GP</th><th class="n">BE</th><th class="n">FE</th><th class="n">IA</th><th>Outros recursos</th>
+          </tr></thead>
+          <tbody>
+            <tr><td>A</td><td>Planejamento do projeto</td><td class="n">3</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td>—</td></tr>
+            <tr><td>B</td><td>Requisitos e histórias</td><td class="n">4</td><td class="n">—</td><td class="n">2</td><td class="n">2</td><td>—</td></tr>
+            <tr><td>C</td><td>Protótipo de interface</td><td class="n">1</td><td class="n">—</td><td class="n">4</td><td class="n">—</td><td>Figma (licença educacional)</td></tr>
+            <tr><td>D</td><td>Arquitetura e dados</td><td class="n">—</td><td class="n">3</td><td class="n">—</td><td class="n">2</td><td>—</td></tr>
+            <tr><td>E</td><td>Back-end, banco e autenticação</td><td class="n">—</td><td class="n">5</td><td class="n">—</td><td class="n">—</td><td>Hospedagem e banco em nuvem, R$ 300</td></tr>
+            <tr><td>F</td><td>Front-end base</td><td class="n">—</td><td class="n">—</td><td class="n">5</td><td class="n">—</td><td>—</td></tr>
+            <tr><td>G</td><td>Agenda e tarefas</td><td class="n">—</td><td class="n">6</td><td class="n">6</td><td class="n">—</td><td>—</td></tr>
+            <tr><td>H</td><td>Chatbot e linguagem natural</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">7</td><td>—</td></tr>
+            <tr><td>I</td><td>Plano de revisão</td><td class="n">—</td><td class="n">4</td><td class="n">2</td><td class="n">—</td><td>—</td></tr>
+            <tr><td>J</td><td>Sessões adaptativas</td><td class="n">—</td><td class="n">—</td><td class="n">3</td><td class="n">5</td><td>—</td></tr>
+            <tr><td>K</td><td>Integração e homologação</td><td class="n">2</td><td class="n">6</td><td class="n">6</td><td class="n">6</td><td>—</td></tr>
+            <tr><td>L</td><td>Piloto com estudantes</td><td class="n">3</td><td class="n">—</td><td class="n">—</td><td class="n">3</td><td>Lanche para os voluntários, R$ 300</td></tr>
+            <tr><td>M</td><td>Implantação e manual</td><td class="n">—</td><td class="n">3</td><td class="n">3</td><td class="n">—</td><td>Domínio, R$ 40</td></tr>
+            <tr><td>N</td><td>Aceitação e encerramento</td><td class="n">2</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td>—</td></tr>
+            <tr><td>Apoio</td><td>Acompanhamento da gestão (LOE)</td><td class="n">8</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td>—</td></tr>
+            <tr><td>API</td><td>Consumo do modelo de linguagem</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td>R$ 350 para todo o projeto (estimativa abaixo)</td></tr>
+            <tr class="total"><td></td><td>Total (pessoa-dia)</td><td class="n">23</td><td class="n">29</td><td class="n">33</td><td class="n">27</td><td>R$ 640 + API</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="caption">Valores em pessoa-dia. O apoio de gestão são 8 dias do GP distribuídos ao longo do projeto, cerca de um dia por semana. As reservas R1 e R2 não têm recursos alocados; o custo de usá-las está coberto pela reserva gerencial (seção 6).</p>
+
+      <h3 style="margin-top:28px">Estimativa de consumo da API de IA</h3>
+      <p class="lead2">O chatbot, o plano de revisão e as sessões chamam um modelo de linguagem pago por token. Esse consumo acontece no desenvolvimento, nos testes, no piloto e em produção.</p>
+      <div class="scope-grid" style="margin-bottom:6px">
+        <div class="scope-box">
+          <h4>Premissas de preço</h4>
+          <ul>
+            <li>Modelo da faixa econômica (classe de Claude Haiku, GPT mini ou Gemini Flash), que basta para conversa curta e organização de agenda.</li>
+            <li>Preço de referência: US$ 1,00 por milhão de tokens de entrada e US$ 5,00 por milhão de saída, no topo da faixa econômica pesquisada em nov/2026.</li>
+            <li>Câmbio de referência: US$ 1 = R$ 5,50.</li>
+          </ul>
+        </div>
+        <div class="scope-box">
+          <h4>Custo por chamada</h4>
+          <ul>
+            <li><b>Conversa</b> (chatbot, cadastro por texto, mensagens das sessões): 3.000 tokens de entrada, contando instruções, histórico e agenda do aluno, e 500 de saída, cerca de <b>R$ 0,03</b>.</li>
+            <li><b>Geração de plano de revisão</b>: 6.000 tokens de entrada e 2.000 de saída, cerca de <b>R$ 0,09</b>.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="t">
+          <thead><tr><th>Uso</th><th>Ativ.</th><th class="n">Chamadas</th><th>Como chegamos ao volume</th><th class="n">Custo (R$)</th></tr></thead>
+          <tbody>
+            <tr><td>Desenvolvimento do chatbot e das sessões</td><td>H, J</td><td class="n">1.450</td><td class="wrap-cell">7 dias × 150 testes manuais (H) + 5 dias × 80 (J)</td><td class="n">43,86</td></tr>
+            <tr><td>Geração de planos de revisão</td><td>I, L</td><td class="n">230</td><td class="wrap-cell">4 dias × 50 no desenvolvimento + 1 plano por aluno do piloto</td><td class="n">20,24</td></tr>
+            <tr><td>Testes automatizados e homologação</td><td>K</td><td class="n">1.800</td><td class="wrap-cell">6 dias × 300 chamadas da suíte de testes</td><td class="n">54,45</td></tr>
+            <tr><td>Piloto com estudantes</td><td>L</td><td class="n">1.350</td><td class="wrap-cell">30 alunos × 3 dias × 15 conversas</td><td class="n">40,84</td></tr>
+            <tr><td>Produção até o aceite</td><td>M, N</td><td class="n">500</td><td class="wrap-cell">5 dias × 100 conversas</td><td class="n">15,13</td></tr>
+            <tr><td colspan="4">Subtotal estimado</td><td class="n">174,52</td></tr>
+            <tr><td colspan="4">Margem de 100% (ajustes de prompt, erros que repetem chamadas, variação de preço e câmbio)</td><td class="n">174,52</td></tr>
+            <tr class="total"><td colspan="4">Orçamento de API (arredondado)</td><td class="n">350,00</td></tr>
+          </tbody>
+        </table>
+      </div>
+      
+    </div>
+
+    <!-- 6. ORÇAMENTO -->
+    <div class="sub" id="orcamento">
+      <h3><span class="num">06</span>Orçamento e BAC</h3>
+      <p class="lead2">O custo de cada atividade é a soma de pessoa-dia × custo diário de cada papel, mais os recursos não humanos. A soma de todas as atividades é o BAC (Budget at Completion), o orçamento total da linha de base de medição.</p>
+
+      <div class="table-wrap">
+        <table class="t">
+          <thead><tr><th>Ativ.</th><th>Cálculo</th><th class="n">BAC (R$)</th></tr></thead>
+          <tbody>
+            <tr><td>A</td><td>3×640 + 1×600 + 1×560 + 1×680</td><td class="n">3.760</td></tr>
+            <tr><td>B</td><td>4×640 + 2×560 + 2×680</td><td class="n">5.040</td></tr>
+            <tr><td>C</td><td>1×640 + 4×560</td><td class="n">2.880</td></tr>
+            <tr><td>D</td><td>3×600 + 2×680</td><td class="n">3.160</td></tr>
+            <tr><td>E</td><td>5×600 + 300 (nuvem)</td><td class="n">3.300</td></tr>
+            <tr><td>F</td><td>5×560</td><td class="n">2.800</td></tr>
+            <tr><td>G</td><td>6×600 + 6×560</td><td class="n">6.960</td></tr>
+            <tr><td>H</td><td>7×680</td><td class="n">4.760</td></tr>
+            <tr><td>I</td><td>4×600 + 2×560</td><td class="n">3.520</td></tr>
+            <tr><td>J</td><td>3×560 + 5×680</td><td class="n">5.080</td></tr>
+            <tr><td>K</td><td>2×640 + 6×600 + 6×560 + 6×680</td><td class="n">12.320</td></tr>
+            <tr><td>L</td><td>3×640 + 3×680 + 300 (lanche)</td><td class="n">4.260</td></tr>
+            <tr><td>M</td><td>3×600 + 3×560 + 40 (domínio)</td><td class="n">3.520</td></tr>
+            <tr><td>N</td><td>2×640 + 1×600 + 1×560 + 1×680</td><td class="n">3.120</td></tr>
+            <tr><td>Apoio</td><td>8×640</td><td class="n">5.120</td></tr>
+            <tr><td>API</td><td>Consumo do modelo de linguagem (seção 5)</td><td class="n">350</td></tr>
+            <tr><td>R1, R2</td><td>Reservas de prazo, sem trabalho planejado</td><td class="n">0</td></tr>
+            <tr class="total"><td>Total</td><td>BAC</td><td class="n">69.950</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-wrap">
+        <table class="t">
+          <thead><tr><th>Grupo da EAP</th><th>Atividades</th><th class="n">BAC (R$)</th><th class="n">% do total</th></tr></thead>
+          <tbody>
+            <tr><td>1 Gestão</td><td>A, Apoio, N</td><td class="n">12.000</td><td class="n">17,2%</td></tr>
+            <tr><td>2 Concepção</td><td>B, C, D</td><td class="n">11.080</td><td class="n">15,8%</td></tr>
+            <tr><td>3 Produto</td><td>E, F, G, H, I, J</td><td class="n">26.420</td><td class="n">37,8%</td></tr>
+            <tr><td>4 Verificação</td><td>K, L</td><td class="n">16.580</td><td class="n">23,7%</td></tr>
+            <tr><td>5 Implantação</td><td>M</td><td class="n">3.520</td><td class="n">5,0%</td></tr>
+            <tr><td>Consumo de API (transversal)</td><td>API</td><td class="n">350</td><td class="n">0,5%</td></tr>
+            <tr class="total"><td>Total</td><td></td><td class="n">69.950</td><td class="n">100%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bac-hero">
+        <div class="stat main"><small>BAC</small><strong>R$ 69.950</strong><p>Linha de base de medição: mão de obra R$ 68.960 + recursos R$ 990 (nuvem, lanche, domínio e API)</p></div>
+        <div class="stat"><small>Reserva gerencial (pior cenário)</small><strong>R$ 14.880</strong><p>6 dias de reserva × equipe completa (R$ 2.480/dia). Fica fora da linha de base e não entra no PV</p></div>
+        <div class="stat"><small>Orçamento total</small><strong>R$ 84.830</strong><p>BAC + reserva gerencial</p></div>
+      </div>
+
+      <h3 style="margin-top:28px">Valor planejado acumulado (curva S)</h3>
+      <p class="lead2">Distribuindo o custo de cada atividade igualmente pelos seus dias na baseline, obtemos o PV acumulado de cada dia. É contra essa curva que o EV e o AC serão comparados em cada data de corte. Passe o cursor sobre o gráfico para ler o PV de cada dia.</p>
+      <div class="diagram chart-box" id="scurve-box">
+        <svg id="scurve" viewBox="0 0 900 320" role="img" aria-label="Curva S do valor planejado acumulado"></svg>
+        <div class="tip" id="scurve-tip"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  // Dados da baseline: es = início cedo (dias decorridos), ls = início tarde
+  const A = [
+    { id: 'A', nome: 'Planejamento', d: 3, es: 0,  ls: 0,  pred: [],              custo: 3760, col: 0, row: 1 },
+    { id: 'B', nome: 'Requisitos', d: 4, es: 3,  ls: 3,  pred: ['A'],           custo: 5040, col: 1, row: 1 },
+    { id: 'C', nome: 'Protótipo UI', d: 4, es: 7,  ls: 7,  pred: ['B'],           custo: 2880, col: 2, row: 0 },
+    { id: 'D', nome: 'Arquitetura', d: 3, es: 7,  ls: 8,  pred: ['B'],           custo: 3160, col: 2, row: 2 },
+    { id: 'E', nome: 'Back-end base', d: 5, es: 10, ls: 11, pred: ['D'],           custo: 3300, col: 3, row: 2 },
+    { id: 'F', nome: 'Front-end base', d: 5, es: 11, ls: 11, pred: ['C', 'D'],      custo: 2800, col: 3, row: 0 },
+    { id: 'G', nome: 'Agenda e tarefas', d: 6, es: 16, ls: 16, pred: ['E', 'F'],      custo: 6960, col: 4, row: 0 },
+    { id: 'H', nome: 'Chatbot IA', d: 7, es: 15, ls: 20, pred: ['E'],           custo: 4760, col: 4, row: 2 },
+    { id: 'I', nome: 'Plano de revisão', d: 4, es: 22, ls: 23, pred: ['G'],           custo: 3520, col: 5, row: 1 },
+    { id: 'J', nome: 'Sessões adaptativas', d: 5, es: 22, ls: 22, pred: ['G'],           custo: 5080, col: 5, row: 0 },
+    { id: 'R1', nome: 'Reserva técnica', d: 3, es: 27, ls: 27, pred: ['H', 'I', 'J'], custo: 0, col: 6, row: 1, res: true },
+    { id: 'K', nome: 'Integração e homologação', d: 6, es: 30, ls: 30, pred: ['R1'], custo: 12320, col: 7, row: 1 },
+    { id: 'L', nome: 'Piloto', d: 3, es: 36, ls: 36, pred: ['K'],           custo: 4260, col: 8, row: 1 },
+    { id: 'R2', nome: 'Reserva do piloto', d: 3, es: 39, ls: 39, pred: ['L'], custo: 0, col: 9, row: 1, res: true },
+    { id: 'M', nome: 'Implantação', d: 3, es: 42, ls: 42, pred: ['R2'],          custo: 3520, col: 10, row: 1 },
+    { id: 'N', nome: 'Encerramento', d: 2, es: 45, ls: 45, pred: ['M'],           custo: 3120, col: 11, row: 1 }
+  ];
+  const APOIO = 5120, DIAS = 47;
+  const API = 350, API_INI = 15; // consumo de API distribuído do início do chatbot (dia 16) ao fim
+  const BAC = A.reduce((s, a) => s + a.custo, APOIO + API);
+  const byId = Object.fromEntries(A.map(a => [a.id, a]));
+  A.forEach(a => { a.ef = a.es + a.d; a.lf = a.ls + a.d; a.folga = a.ls - a.es; a.crit = a.folga === 0 && !a.res; });
+  const GREEN = getComputedStyle(document.documentElement).getPropertyValue('--ok').trim();
+
+  const NS = 'http://www.w3.org/2000/svg';
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const el = (tag, attrs, parent, text) => {
+    const e = document.createElementNS(NS, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (text !== undefined) e.textContent = text;
+    parent.appendChild(e); return e;
+  };
+  const brl = v => 'R$ ' + Math.round(v).toLocaleString('pt-BR');
+
+  // ---------- Diagrama de rede ----------
+  const net = document.getElementById('net');
+  const W = 96, H = 84, STEP = 118, ROWY = [20, 130, 240];
+  const pos = a => ({ x: 10 + a.col * STEP, y: ROWY[a.row] });
+  const ORANGE = css('--accent'), BLUE = css('--brand'), INK = css('--ink'), MUTED = css('--muted'), LINE = css('--line');
+  const defs = el('defs', {}, net);
+  [['arrC', ORANGE], ['arrN', '#9aa1b0']].forEach(([id, c]) => {
+    const m = el('marker', { id, viewBox: '0 0 10 10', refX: 9, refY: 5, markerWidth: 7, markerHeight: 7, orient: 'auto' }, defs);
+    el('path', { d: 'M0 0L10 5L0 10z', fill: c }, m);
+  });
+  A.forEach(t => t.pred.forEach(pid => {
+    const s = byId[pid], ps = pos(s), pt = pos(t);
+    const x1 = ps.x + W, y1 = ps.y + H / 2, x2 = pt.x - 2, y2 = pt.y + H / 2;
+    const crit = (s.crit || s.res) && (t.crit || t.res) && s.ef === t.es;
+    const mx = (x1 + x2) / 2;
+    el('path', {
+      d: `M${x1} ${y1} C${mx} ${y1} ${mx} ${y2} ${x2} ${y2}`, fill: 'none',
+      stroke: crit ? ORANGE : '#9aa1b0', 'stroke-width': crit ? 2.5 : 1.5,
+      'marker-end': `url(#${crit ? 'arrC' : 'arrN'})`
+    }, net);
+  }));
+  A.forEach(a => {
+    const { x, y } = pos(a), c = a.res ? GREEN : a.crit ? ORANGE : BLUE;
+    const g = el('g', {}, net);
+    el('title', {}, g, a.res ? `${a.id} · ${a.nome}: ${a.d} dias de folga planejada` : `${a.id} · ${a.nome}: ${a.d} dias, folga ${a.folga}`);
+    el('rect', Object.assign({ x, y, width: W, height: H, rx: 8, fill: a.res ? '#f3faf7' : '#fff', stroke: c, 'stroke-width': 2 }, a.res ? { 'stroke-dasharray': '5 4' } : {}), g);
+    el('line', { x1: x, y1: y + 22, x2: x + W, y2: y + 22, stroke: LINE }, g);
+    el('line', { x1: x, y1: y + 62, x2: x + W, y2: y + 62, stroke: LINE }, g);
+    [32, 64].forEach(dx => {
+      el('line', { x1: x + dx, y1: y, x2: x + dx, y2: y + 22, stroke: LINE }, g);
+      el('line', { x1: x + dx, y1: y + 62, x2: x + dx, y2: y + 84, stroke: LINE }, g);
+    });
+    const t = (tx, ty, s, opt = {}) => el('text', Object.assign({ x: tx, y: ty, 'text-anchor': 'middle', 'font-size': 11, fill: MUTED, 'font-family': 'Inter, sans-serif' }, opt), g, s);
+    t(x + 16, y + 15, a.es); t(x + 48, y + 15, a.d, { fill: INK, 'font-weight': 600 }); t(x + 80, y + 15, a.ef);
+    // nomes longos quebram em duas linhas
+    const words = a.nome.split(' '), lines = [];
+    words.forEach(w => { const l = lines[lines.length - 1]; if (l && (l + ' ' + w).length <= 16) lines[lines.length - 1] = l + ' ' + w; else lines.push(w); });
+    const two = lines.length > 1;
+    t(x + 48, y + (two ? 37 : 40), a.id, { 'font-size': two ? 13 : 15, 'font-weight': 700, fill: c });
+    lines.slice(0, 2).forEach((l, i) => t(x + 48, y + (two ? 49 + i * 10 : 55), l, { 'font-size': 9.5, fill: INK }));
+    t(x + 16, y + 77, a.ls); t(x + 48, y + 77, a.res ? '—' : a.folga, { fill: a.crit ? ORANGE : INK, 'font-weight': 600 }); t(x + 80, y + 77, a.lf);
+  });
+
+  // ---------- Gantt ----------
+  const gantt = document.getElementById('gantt');
+  const add = (cls, style, html) => { const d = document.createElement('div'); d.className = cls; if (style) d.style.cssText = style; if (html !== undefined) d.innerHTML = html; gantt.appendChild(d); return d; };
+  gantt.style.gridTemplateColumns = `190px repeat(${DIAS}, minmax(16px, 1fr))`;
+  gantt.style.minWidth = '940px';
+  add('h', '', '');
+  for (let w = 0; w < Math.ceil(DIAS / 5); w++) {
+    const span = Math.min(5, DIAS - w * 5);
+    add('h wk', `grid-column: ${w * 5 + 2} / span ${span}`, (span < 3 ? 'S' : 'Sem ') + (w + 1));
+  }
+  add('h', 'grid-row: 2', '<b>Dia útil</b>');
+  for (let d = 1; d <= DIAS; d++) add('h', 'grid-row: 2', d);
+  const rows = A.map(a => ({ ...a, label: `<b>${a.id}</b>${a.nome}` }))
+    .concat([{ id: 'Apoio', label: '<b>·</b>Apoio de gestão (LOE)', es: 0, d: DIAS, loe: true, crit: false }]);
+  rows.forEach((a, i) => {
+    const r = i + 3;
+    add('lbl' + (a.crit ? ' crit' : '') + (a.res ? ' res' : ''),`grid-row: ${r}; grid-column: 1`, a.label);
+    for (let d = 1; d <= DIAS; d++) add('cell' + ((d - 1) % 5 === 0 ? ' wkline' : ''), `grid-row: ${r}; grid-column: ${d + 1}`);
+    const bar = add('bar' + (a.crit ? ' crit' : '') + (a.loe ? ' loe' : '') + (a.res ? ' res' : ''), `grid-row: ${r}; grid-column: ${a.es + 2} / span ${a.d}`);
+    bar.title = a.loe ? `Apoio de gestão: dias 1 a ${DIAS}` : a.res ? `${a.id}: reserva de prazo, dias ${a.es + 1} a ${a.ef}` : `${a.id}: dias ${a.es + 1} a ${a.es + a.d}` + (a.folga ? ` (folga ${a.folga})` : ' (crítica)');
+  });
+
+  // ---------- Curva S do PV ----------
+  const pv = [0];
+  for (let d = 1; d <= DIAS; d++) {
+    let v = APOIO / DIAS + (d > API_INI ? API / (DIAS - API_INI) : 0);
+    A.forEach(a => { if (d > a.es && d <= a.ef) v += a.custo / a.d; });
+    pv.push(pv[d - 1] + v);
+  }
+  const sv = document.getElementById('scurve'), tip = document.getElementById('scurve-tip'), box = document.getElementById('scurve-box');
+  const L = 64, R = 20, T = 20, B = 44, CW = 900 - L - R, CH = 320 - T - B, YMAX = 80000;
+  const X = d => L + d / DIAS * CW, Y = v => T + CH - v / YMAX * CH;
+  for (let v = 0; v <= YMAX; v += 10000) {
+    el('line', { x1: L, x2: L + CW, y1: Y(v), y2: Y(v), stroke: v ? '#eeebe4' : '#c9c4b8' }, sv);
+    el('text', { x: L - 8, y: Y(v) + 4, 'text-anchor': 'end', 'font-size': 12, fill: MUTED }, sv, v / 1000);
+  }
+  for (let d = 0; d <= DIAS; d += 5) el('text', { x: X(d), y: T + CH + 18, 'text-anchor': 'middle', 'font-size': 12, fill: MUTED }, sv, d);
+  el('text', { x: L + CW / 2, y: 316, 'text-anchor': 'middle', 'font-size': 12, fill: MUTED }, sv, 'Dia útil');
+  el('text', { x: 16, y: T + CH / 2, 'text-anchor': 'middle', 'font-size': 12, fill: MUTED, transform: `rotate(-90 16 ${T + CH / 2})` }, sv, 'PV acumulado (R$ mil)');
+  // linha do BAC
+  [[27, 30], [39, 42]].forEach(([a, b]) => el('rect', { x: X(a), y: T, width: X(b) - X(a), height: CH, fill: GREEN, opacity: .08 }, sv));
+  el('line', { x1: L, x2: L + CW, y1: Y(BAC), y2: Y(BAC), stroke: MUTED, 'stroke-dasharray': '4 4' }, sv);
+  el('text', { x: L + 6, y: Y(BAC) - 6, 'font-size': 12, fill: MUTED }, sv, 'BAC = ' + brl(BAC));
+  el('path', { d: pv.map((v, d) => `${d ? 'L' : 'M'}${X(d)} ${Y(v)}`).join(' ') + ` L${X(DIAS)} ${Y(0)} L${X(0)} ${Y(0)}Z`, fill: BLUE, opacity: .08 }, sv);
+  el('path', { d: pv.map((v, d) => `${d ? 'L' : 'M'}${X(d)} ${Y(v)}`).join(' '), fill: 'none', stroke: BLUE, 'stroke-width': 2, 'stroke-linejoin': 'round' }, sv);
+  const cross = el('line', { y1: T, y2: T + CH, stroke: INK, 'stroke-width': 1, opacity: 0 }, sv);
+  const dot = el('circle', { r: 5, fill: BLUE, stroke: '#fff', 'stroke-width': 2, opacity: 0 }, sv);
+  const hit = el('rect', { x: L, y: T, width: CW, height: CH, fill: 'transparent' }, sv);
+  const show = ev => {
+    const pt = sv.createSVGPoint(); pt.x = ev.clientX; pt.y = ev.clientY;
+    const p = pt.matrixTransform(sv.getScreenCTM().inverse());
+    const d = Math.max(0, Math.min(DIAS, Math.round((p.x - L) / CW * DIAS)));
+    cross.setAttribute('x1', X(d)); cross.setAttribute('x2', X(d)); cross.setAttribute('opacity', .35);
+    dot.setAttribute('cx', X(d)); dot.setAttribute('cy', Y(pv[d])); dot.setAttribute('opacity', 1);
+    const ativas = A.filter(a => d > a.es && d <= a.ef).map(a => a.res ? a.id + ' (reserva)' : a.id).join(', ');
+    tip.innerHTML = `<b>Dia ${d}</b> · PV ${brl(pv[d])}` + (d ? `<br>${(pv[d] / BAC * 100).toFixed(1).replace('.', ',')}% do BAC${ativas ? ' · em curso: ' + ativas : ''}` : '');
+    const rb = box.getBoundingClientRect(), sb = sv.getBoundingClientRect();
+    const px = sb.left - rb.left + X(d) / 900 * sb.width, py = sb.top - rb.top + Y(pv[d]) / 320 * sb.height;
+    tip.style.left = Math.min(px + 12, rb.width - tip.offsetWidth - 8) + 'px';
+    tip.style.top = Math.max(4, py - 52) + 'px';
+    tip.style.opacity = 1;
+  };
+  hit.addEventListener('pointermove', show);
+  hit.addEventListener('pointerleave', () => { tip.style.opacity = 0; cross.setAttribute('opacity', 0); dot.setAttribute('opacity', 0); });
+})();
+</script>
 
 <!-- LINKS -->
 <section id="links">
